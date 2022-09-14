@@ -8,12 +8,14 @@ const currencyStore = useCurrencyStore()
 
 // Data
 const codes = ref(currencyStore.currenciesCodes) // all currencies as codes
+const baseCurrencyCode = ref(null)
 const baseCurrencyTo = ref(null)
 const baseCurrencyFrom = computed(() => (1 / baseCurrencyTo.value).toFixed(4))
 
 // Event listeners
 function onBaseCurrencyChange(event) {
-	baseCurrencyTo.value = currencyStore.valueOfCurrency(event.target.value)?.now ?? null
+	baseCurrencyCode.value = event.target.value
+	baseCurrencyTo.value = currencyStore.valueOfCurrency(baseCurrencyCode.value)?.now ?? null
 }
 </script>
 
@@ -30,10 +32,10 @@ function onBaseCurrencyChange(event) {
 		</div>
 		<div v-if="baseCurrencyTo" class="card-body">
 			<p>
-				1 USD = {{ baseCurrencyTo }} RUB
+				1 {{ baseCurrencyCode }} = {{ baseCurrencyTo }} RUB
 			</p>
 			<p>
-				1 RUB = {{ baseCurrencyFrom }} USD
+				1 RUB = {{ baseCurrencyFrom }} {{ baseCurrencyCode }}
 			</p>
 		</div>
 	</Card>
