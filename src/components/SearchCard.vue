@@ -42,6 +42,8 @@ function onInput(event) {
 	.card__search-el {
 		height: 100%;
 
+		margin: 0;
+
 		background-color: var(--color-1);
 	}
 }

@@ -9,8 +9,11 @@ import PairCard from './components/PairCard.vue'
 import { useCurrencyStore } from './stores/currency'
 const currencyStore = useCurrencyStore()
 
+// Constants
+const allCodes = currencyStore.currenciesCodes
+
 // Data
-const codes = ref(currencyStore.currenciesCodes) // all currencies as codes
+const codes = ref(allCodes) // all currencies as codes
 
 // Event listeners
 function onSeach(searchQuery) {
