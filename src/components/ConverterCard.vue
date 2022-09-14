@@ -51,6 +51,8 @@ function onBaseCurrencyChange(event) {
 		select {
 			margin-top: 10px;
 			padding: 12px;
+
+			background-color: var(--color-1);
 		}
 	}
 

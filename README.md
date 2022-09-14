@@ -1,24 +1,23 @@
-# currency-converter
+# Currency converter
+Небольшой веб-сервис сделанный в рамках тестового задания.
 
-## Project setup
-```
-npm install
-```
+![Интерфейс светлой темы](etc/screenshot_light.png)
+![Интерфейс темной темы](etc/screenshot_dark.png)
 
-### Compiles and hot-reloads for development
+## Стэк
+- Vue 3 (Composition API)
+- Pinia
+- SCSS
+
+## Фичи
+- Выбор основной валюты и отображение ее курса
+- Отображение других валют и их курсов
+- Поиск среди списка "других валют"
+- Темная и светлая тема :)
+
+
+## Запуск проекта
 ```
+npm i
 npm run serve
 ```
-
-### Compiles and minifies for production
-```
-npm run build
-```
-
-### Lints and fixes files
-```
-npm run lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).

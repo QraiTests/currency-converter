@@ -1,9 +1,10 @@
 <script setup>
 import { ref } from 'vue'
 import TheContainer from './components/TheContainer.vue'
-import ConverterCard from './components/ConverterCard.vue';
-import SearchCard from './components/SearchCard.vue';
+import ConverterCard from './components/ConverterCard.vue'
+import SearchCard from './components/SearchCard.vue'
 import PairCard from './components/PairCard.vue'
+import ThemeSwitcher from './components/ThemeSwitcher.vue'
 
 // Stores
 import { useCurrencyStore } from './stores/currency'
@@ -34,4 +35,7 @@ function onSeach(searchQuery) {
 		<SearchCard @update:query="onSeach" placeholder="Что будем искать? USD, например?" />
 		<PairCard v-for="code of codes" :key="code" :currency-code="code" />
 	</TheContainer>
+
+	<!-- Theme Switcher -->
+	<ThemeSwitcher />
 </template>
