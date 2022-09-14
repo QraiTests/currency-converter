@@ -1,8 +1,34 @@
+:root {
+	--border-radius-sm: 10px;
+	--border-radius-md: 25px;
+
+	--text-1: 36px;
+	--text-2: 30px;
+	--text-3: 26px;
+	--text-4: 20px;
+	--text-5: 16px;
+
+	--color-accent: #316cf8;
+	--color-accent-alpha: rgba(49, 108, 248, .4);
+
+	--transition: .3s ease-in-out;
+}
+
 [data-theme="light"] {
-	--color-0: white;
-	--color-10: black;
+	--color-1: #ffffff;
+	--color-2: #f7f7f8;
+	--color-3: #dadce0;
+	--color-4: #c2c6cd;
+	--color-5: #a8adb4;
+	--color-text: black;
+	--color-muted: rgba(0, 0, 0, .4);
 }
 [data-theme="dark"] {
-	--color-0: black;
-	--color-10: white;
+	--color-1: #171718;
+	--color-2: #242425;
+	--color-3: #303032;
+	--color-4: #3e3e42;
+	--color-5: #505056;
+	--color-text: white;
+	--color-muted: rgba(255, 255, 255, .4);
 }
