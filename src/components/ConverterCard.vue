@@ -1,5 +1,5 @@
 <script setup>
-import { ref } from 'vue'
+import { ref, computed } from 'vue'
 import Card from './TheCard.vue'
 
 // Stores
@@ -8,32 +8,33 @@ const currencyStore = useCurrencyStore()
 
 // Data
 const codes = ref(currencyStore.currenciesCodes) // all currencies as codes
+const baseCurrencyTo = ref(null)
+const baseCurrencyFrom = computed(() => (1 / baseCurrencyTo.value).toFixed(4))
+
+// Event listeners
+function onBaseCurrencyChange(event) {
+	baseCurrencyTo.value = currencyStore.valueOfCurrency(event.target.value)?.now ?? null
+}
 </script>
 
 <template>
 	<Card class="card__converter">
-		<div class="card-header">
-			<div class="field">
-				<label>Из какой валюты?</label>
-				<select required>
-					<option value="" selected disabled>RUB?</option>
-					<option v-for="code of codes" :key="code" :value="code">
-						{{ code }}
-					</option>
-				</select>
-			</div>
-			<div class="field">
-				<label>В какую валюту?</label>
-				<select required>
-					<option value="" selected disabled>EUR?</option>
-					<option v-for="code of codes" :key="code" :value="code">
-						{{ code }}
-					</option>
-				</select>
-			</div>
+		<div class="field">
+			<label>Основная валюта</label>
+			<select required @input="onBaseCurrencyChange">
+				<option value="" selected disabled>Например, USD</option>
+				<option v-for="code of codes" :key="code" :value="code">
+					{{ code }}
+				</option>
+			</select>
 		</div>
-		<div class="card-body">
-
+		<div v-if="baseCurrencyTo" class="card-body">
+			<p>
+				1 USD = {{ baseCurrencyTo }} RUB
+			</p>
+			<p>
+				1 RUB = {{ baseCurrencyFrom }} USD
+			</p>
 		</div>
 	</Card>
 </template>
@@ -43,17 +44,25 @@ const codes = ref(currencyStore.currenciesCodes) // all currencies as codes
 	height: min-content;
 	max-height: none;
 
-	.card-header {
-		display: flex;
-		flex-direction: row;
-		gap: 20px;
-
+	.field {
 		label {
 			margin-top: 0;
 		}
-		.field {
-			width: 50%;
+		select {
+			margin-top: 10px;
+			padding: 12px;
 		}
+	}
+
+	.card-body {
+		display: flex;
+		flex-direction: row;
+		align-items: center;
+		justify-content: space-between;
+
+		padding-top: 30px;
+
+		font-size: var(--text-3);
 	}
 }
 </style>

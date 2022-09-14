@@ -27,7 +27,7 @@ function onSeach(searchQuery) {
 
 <template>
 	<TheContainer>
-		<h1>Обменник</h1>
+		<h1>Переводчик валют</h1>
 		<ConverterCard />
 
 		<h1>Другие валюты</h1>
